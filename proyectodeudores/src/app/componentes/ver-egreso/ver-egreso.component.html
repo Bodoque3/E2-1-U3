@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerEgreso</title>
+</head>
+<body>
+    <div>
+        <form [formGroup]="veregreso">
+            <div>
+                <label for="id_usuario">ID Usuario</label>
+                <input type="text" id="id_usuario" formControlName="id_usuario">
+            </div>
+
+            <button type="button" id="buscarUsuario" (click)="buscarusuario()">Buscar Usuario</button>
+            <button type="button" id="buscarEgreso" (click)="buscaregreso()">Buscar Egreso</button>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Rut</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">ID Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dato of registros">
+                <td>{{ dato._id }}</td>
+                <td>{{ dato.descripcion }}</td>
+                <td>{{ dato.precio }}</td>
+                <td>{{ dato.rut }}</td>
+                <td>{{ dato.nombre }}</td>
+                <td>{{ dato.apellido }}</td>
+                <td>{{ dato.id }}</td>        
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

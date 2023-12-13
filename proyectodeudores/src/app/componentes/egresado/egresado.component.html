@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div>
+        <h1>Egresados</h1>
+    </div>
+    <form [formGroup]="Egresado" method="POST">
+        <div class="form-group">
+            <div>
+                <label>descripcion</label>
+                <input type="text" placeholder="Ingresa Valor descripcion" formControlName="descripcion" required>
+                <small
+                    *ngIf=" formularioReactivo.descripcion?.errors?.required && formularioReactivo.descripcion.touched ">
+                    El descripcion es descripcion
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>precio</label>
+                <input type="text" placeholder="Ingresa tu precio" formControlName="precio">
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>ID Usuario</label>
+                <input type="text" placeholder="Ingresa tu ID Usuario" formControlName="id_usuario">
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <button class="btn btn-primary" type="submit" (click)="enviar_egreso()"
+                    [disabled]="!Egresado.valid">Enviar</button>
+            </div>
+        </div>
+    </form>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">ID USUARIO</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dato of Egresado">
+                <td>{{dato._id}}</td>
+                <td>{{dato.Descripcion}}</td>
+                <td>{{dato.Precio}}</td>
+                <td>{{dato.Id_usuario}}</td>
+                <td><button (click)="eliminar_egreso(dato._id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
